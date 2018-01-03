@@ -1,0 +1,12 @@
+2
+S
+A
+3
+a
+b
+ε
+4
+S a b A
+S ε
+A S a a
+A b

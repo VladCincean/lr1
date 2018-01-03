@@ -1,0 +1,13 @@
+2
+S
+A
+4
+a
+b
+c
+ε
+4
+S A A c
+A a A
+A b
+A ε
