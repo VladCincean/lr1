@@ -5,6 +5,7 @@ import model.symbol.Symbol;
 import model.symbol.Terminal;
 import parser.lr1.CanonicalCollection;
 import parser.lr1.State;
+import parser.lr1.Table;
 
 import java.util.Map;
 import java.util.Set;
@@ -27,5 +28,8 @@ public class Main {
             System.out.println(Integer.toString(i) + ": " + s.toString());
             i++;
         }
+
+        Table table = new Table(cfg);
+        System.out.println(table.toString());
     }
 }

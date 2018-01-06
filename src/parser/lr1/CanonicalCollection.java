@@ -31,6 +31,24 @@ public class CanonicalCollection {
     }
 
     /**
+     * Tells you what is the index of the state sj = goto(s, X) in the canonical collection
+     * @param s - state
+     * @param X - symbol
+     * @return  index, or -1 if error
+     */
+    public int getGoto1Index(State s, Symbol X) {
+        State sj = goto1(s, X);
+
+        for (int j = 0; j < states.size(); j++) {
+            if (states.get(j).equals(sj)) {
+                return j;
+            }
+        }
+
+        return -1; // error
+    }
+
+    /**
      * Builds the canonical collection according to the ColCan_LR(1) algorithm
      * Input:   G'  - the extended grammar of G
      * Output:  C   - the canonical collection
