@@ -11,6 +11,19 @@ public class State {
     }
 
     public void addElement(Element element) {
+        if (element == null) {
+            System.err.println("State::addElement - null element given");
+            return;
+        }
+
+        // do not add the element if it already exists
+        for (Element e : elements) {
+            if (e.equals(element)) {
+                System.err.println("State::addElement - element already exists");
+                return;
+            }
+        }
+
         this.elements.add(element);
     }
 

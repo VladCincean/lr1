@@ -71,6 +71,9 @@ public class Element {
             sb.append(" ");
             sb.append(core.getRight().get(i).getSymbol());
         }
+        if (dot == core.getRight().size()) {
+            sb.append(" .");
+        }
         sb.append(", ");
         sb.append(prediction.getSymbol());
         sb.append("]");

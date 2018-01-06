@@ -56,27 +56,27 @@ public class CanonicalCollection {
             changes = false;
 
             // for all s in C1 do
+            List<State> toAddInC1 = new ArrayList<>();
             for (State s : C1) {
                 // for all X nonterminal or terminal do
                 for (Nonterminal X : G.getNonterminals()) {
                     State T = goto1(s, X);
-
-                    // if T not empty and T not in C1 then add it to C1
-                    if ((T.getElements().size() > 0) && (!C1.contains(T))) {
-                        changes = true;
-                        C1.add(T);
-                    }
+                    toAddInC1.add(T);
                 }
                 for (Terminal X : G.getTerminals()) {
                     State T = goto1(s, X);
-
-                    // if T not empty and T not in C1 then add it to C1
-                    if ((T.getElements().size() > 0) && (!C1.contains(T))) {
-                        changes = true;
-                        C1.add(T);
-                    }
+                    toAddInC1.add(T);
                 }
             }
+
+            for (State T : toAddInC1) {
+                // if T not empty and T not in C1 then add it to C1
+                if ((T.getElements().size() > 0) && (!C1.contains(T))) {
+                    changes = true;
+                    C1.add(T);
+                }
+            }
+
         } while (changes);
 
         this.states = C1;
@@ -98,12 +98,37 @@ public class CanonicalCollection {
         for (Element e : s.getElements()) {
             //  if [A -> alpha . X beta, u] in s
             //      then add [A -> alpha X . beta, u] in s1
+
+            if (e.getDot() >= e.getCore().getRight().size()) {
+                if (e.getDot() > e.getCore().getRight().size()) {
+                    System.err.println("CanonicalCollection::closure - Something is wrong :(");
+                }
+
+                continue;
+            }
+
             if (e.getCore().getRight().get(e.getDot()).equals(X)) {
                 s1.addElement(new Element(e.getCore(), e.getDot() + 1, e.getPrediction()));
             }
         }
 
-        return s1;
+        return closure(s1);
+    }
+
+    // TODO: test this
+    private State closure(State s) {
+        State C = new State();
+
+        for (Element I : s.getElements()) {
+            State C1 = closure(I);
+            for (Element e : C1.getElements()) {
+                if (!C.getElements().contains(e)) {
+                    C.addElement(e);
+                }
+            }
+        }
+
+        return C;
     }
 
     /**
@@ -126,12 +151,21 @@ public class CanonicalCollection {
             changes = false;
 
             // for all [A -> alpha . B beta, a] in C1 do
+            List<Element> newElements = new ArrayList<>();
             for (Element e : C1.getElements()) {
+                if (e.getDot() >= e.getCore().getRight().size()) {
+                    if (e.getDot() > e.getCore().getRight().size()) {
+                        System.err.println("CanonicalCollection::closure - Something is wrong :(");
+                    }
+
+                    continue;
+                }
+
                 if (e.getCore().getRight().get(e.getDot()) instanceof Nonterminal) {
                     Nonterminal A = e.getCore().getLeft();
                     List<Symbol> alpha = e.getCore().getRight().subList(0, e.getDot());
                     Nonterminal B = (Nonterminal) e.getCore().getRight().get(e.getDot());
-                    List<Symbol> beta = e.getCore().getRight().subList(e.getDot() + 2, e.getCore().getRight().size());
+                    List<Symbol> beta = e.getCore().getRight().subList(e.getDot() + 1, e.getCore().getRight().size());
                     Terminal a = e.getPrediction();
 
                     // for all "B -> gamma" production rule do
@@ -145,13 +179,17 @@ public class CanonicalCollection {
                             betaAlpha.addAll(alpha);
                             for (Terminal b : ff.getFirstOfSequence(betaAlpha)) {
                                 // if [B -> . gamma, b] not in C1 then add it
-                                Element potentialNewElement = new Element(p, 0, b);
-                                if (!C1.getElements().contains(potentialNewElement)) {
-                                    C1.addElement(potentialNewElement);
-                                }
+                                newElements.add(new Element(p, 0, b));
                             }
                         }
                     }
+                }
+            }
+
+            for (Element e : newElements) {
+                if (!C1.getElements().contains(e)) {
+                    changes = true;
+                    C1.addElement(e);
                 }
             }
         } while (changes);
