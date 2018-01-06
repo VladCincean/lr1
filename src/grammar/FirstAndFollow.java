@@ -102,6 +102,10 @@ public class FirstAndFollow {
             }
         } while (!F1.equals(F0));
 
+        Set<Terminal> aaa = new HashSet<>();
+        aaa.add(Terminal.getDollarSymbol());
+        F1.put(Terminal.getDollarSymbol(), aaa);
+
         this.FIRST1 = F1;
     }
 

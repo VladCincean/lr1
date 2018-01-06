@@ -173,11 +173,11 @@ public class CanonicalCollection {
                         if (p.getLeft().equals(B)) {
                             List<Symbol> gamma = p.getRight();
 
-                            // for all b in FIRST(beta alpha) do
-                            List<Symbol> betaAlpha = new ArrayList<>();
-                            betaAlpha.addAll(beta);
-                            betaAlpha.addAll(alpha);
-                            for (Terminal b : ff.getFirstOfSequence(betaAlpha)) {
+                            // for all b in FIRST(beta a) do
+                            List<Symbol> betaA = new ArrayList<>();
+                            betaA.addAll(beta);
+                            betaA.add(a);
+                            for (Terminal b : ff.getFirstOfSequence(betaA)) {
                                 // if [B -> . gamma, b] not in C1 then add it
                                 newElements.add(new Element(p, 0, b));
                             }

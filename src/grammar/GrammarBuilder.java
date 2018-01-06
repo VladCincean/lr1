@@ -109,7 +109,7 @@ public abstract class GrammarBuilder {
         ProductionRuleCFG p = new ProductionRuleCFG(0, S1, rhs);
 
         G.getNonterminals().add(S1);
-        G.getProductionRules().add(p);
+        G.getProductionRules().add(0, p);
         G.setStartSymbol(S1);
     }
 }
