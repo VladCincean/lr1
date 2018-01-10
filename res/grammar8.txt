@@ -1,0 +1,113 @@
+19
+statement_list
+statement
+declaration_statement
+var_type
+var_list
+user_defined_type
+typedefinition_statement
+assignment_statement
+expr
+operator
+if_statement
+else_statement
+while_statement
+input_statement
+input_list
+output_statement
+output_list
+return_statement
+return_code
+36
+IDENTIFIER
+INT_CONSTANT
+REAL_CONSTANT
+INT
+DOUBLE
+NEQ
+ASSIGN
+ADD
+SUB
+MUL
+DIV
+MOD
+LT
+LE
+GT
+GE
+EQ
+SHL
+SHR
+NOT
+AND
+OR
+TYPEDEF
+IF
+ELSE
+WHILE
+CIN
+COUT
+RETURN
+SEMICOLON
+COMMA
+OPEN_BRACE
+CLOSE_BRACE
+OPEN_PARA
+CLOSE_PARA
+MAIN
+ENDL
+54
+statement_list statement
+statement_list statement statement_list
+statement declaration_statement
+statement typedefinition_statement
+statement assignment_statement
+statement if_statement
+statement while_statement
+statement input_statement
+statement output_statement
+statement return_statement
+declaration_statement var_type var_list SEMICOLON
+var_type INT
+var_type DOUBLE
+var_type user_defined_type
+var_list IDENTIFIER
+var_list IDENTIFIER COMMA var_list
+user_defined_type IDENTIFIER
+typedefinition_statement TYPEDEF var_type user_defined_type SEMICOLON
+assignment_statement IDENTIFIER ASSIGN expr SEMICOLON
+expr IDENTIFIER
+expr INT_CONSTANT
+expr REAL_CONSTANT
+expr expr operator expr
+operator ADD
+operator SUB
+operator MUL
+operator DIV
+operator MOD
+operator LT
+operator LE
+operator GT
+operator GE
+operator EQ
+operator NEQ
+operator NOT
+operator AND
+operator OR
+if_statement IF OPEN_PARA expr CLOSE_PARA statement else_statement
+if_statement IF OPEN_PARA expr CLOSE_PARA OPEN_BRACE statement_list CLOSE_BRACE else_statement
+else_statement ELSE statement
+else_statement ELSE OPEN_BRACE statement_list CLOSE_BRACE
+while_statement WHILE OPEN_PARA expr CLOSE_PARA statement
+while_statement WHILE OPEN_PARA expr CLOSE_PARA OPEN_BRACE statement_list CLOSE_BRACE
+input_statement CIN SHR input_list SEMICOLON
+input_list IDENTIFIER
+intput_list IDENTIFIER SHR input_list
+output_statement COUT SHL output_list SEMICOLON
+output_list IDENTIFIER
+output_list ENDL
+output_list IDENTIFIER SHL output_list
+output_list ENDL SHL output_list
+return_statement RETURN return_code SEMICOLON
+return_code IDENTIFIER
+return_code INT_CONSTANT INT_CONSTANT

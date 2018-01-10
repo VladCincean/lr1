@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        ContextFreeGrammar cfg = GrammarBuilder.buildFromFile("res/grammar7.txt");
+        ContextFreeGrammar cfg = GrammarBuilder.buildFromFile("res/grammar8.txt");
         GrammarBuilder.transformToExtendedGrammar(cfg);
         FirstAndFollow ff = new FirstAndFollow(cfg);
 
@@ -33,7 +33,7 @@ public class Main {
         Table table = new Table(cfg);
         System.out.println(table.toString());
 
-        Analyser analyser = new Analyser(cfg, table, "a,a,b", cfg.getProductionRules(), canCol);
+        Analyser analyser = new Analyser(cfg, table, "IF", cfg.getProductionRules(), canCol);
         analyser.analyse();
     }
 }
