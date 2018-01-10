@@ -28,9 +28,9 @@ public class Table {
         return T.get(s).get(a);
     }
 
-//    public Map<State, Map<Symbol, Action>> getT() {
-//        return T;
-//    }
+    public Map<State, Map<Symbol, Action>> getT() {
+        return T;
+    }
 
     private void buildTheTable() {
         this.T = new HashMap<>();

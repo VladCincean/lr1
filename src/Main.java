@@ -1,3 +1,4 @@
+import analysis.Analyser;
 import grammar.ContextFreeGrammar;
 import grammar.FirstAndFollow;
 import grammar.GrammarBuilder;
@@ -31,5 +32,8 @@ public class Main {
 
         Table table = new Table(cfg);
         System.out.println(table.toString());
+
+        Analyser analyser = new Analyser(cfg, table, "a,a,b", cfg.getProductionRules(), canCol);
+        analyser.analyse();
     }
 }
