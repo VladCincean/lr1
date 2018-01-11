@@ -1,4 +1,5 @@
-19
+20
+program
 statement_list
 statement
 declaration_statement
@@ -56,7 +57,8 @@ OPEN_PARA
 CLOSE_PARA
 MAIN
 ENDL
-54
+55
+program INT MAIN OPEN_PARA CLOSE_PARA OPEN_BRACE statement_list CLOSE_BRACE
 statement_list statement
 statement_list statement statement_list
 statement declaration_statement
@@ -102,7 +104,7 @@ while_statement WHILE OPEN_PARA expr CLOSE_PARA statement
 while_statement WHILE OPEN_PARA expr CLOSE_PARA OPEN_BRACE statement_list CLOSE_BRACE
 input_statement CIN SHR input_list SEMICOLON
 input_list IDENTIFIER
-intput_list IDENTIFIER SHR input_list
+input_list IDENTIFIER SHR input_list
 output_statement COUT SHL output_list SEMICOLON
 output_list IDENTIFIER
 output_list ENDL

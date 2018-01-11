@@ -108,9 +108,6 @@ public class CanonicalCollection {
      * @return  new state
      */
     private State goto1(State s, Symbol X) {
-        //  TODO: !!!!
-        //  TODO: something is wrong here, figure out what
-        //  TODO: !!!!
         State s1 = new State();
 
         for (Element e : s.getElements()) {
@@ -133,7 +130,6 @@ public class CanonicalCollection {
         return closure(s1);
     }
 
-    // TODO: test this
     private State closure(State s) {
         State C = new State();
 
@@ -151,7 +147,6 @@ public class CanonicalCollection {
 
     /**
      * Closure algorithm.
-     * TODO: test this
      * @param I - analysis element
      * @return closure(I)
      * Input:   I   - analysis element

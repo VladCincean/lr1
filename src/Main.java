@@ -33,7 +33,10 @@ public class Main {
         Table table = new Table(cfg);
         System.out.println(table.toString());
 
-        Analyser analyser = new Analyser(cfg, table, "IF", cfg.getProductionRules(), canCol);
+        StringBuilder sb = new StringBuilder();
+        sb.append("INT,MAIN,OPEN_PARA,CLOSE_PARA,OPEN_BRACE,INT,IDENTIFIER,CLOSE_BRACE");
+
+        Analyser analyser = new Analyser(cfg, table, sb.toString(), cfg.getProductionRules(), canCol);
         analyser.analyse();
     }
 }

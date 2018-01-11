@@ -197,7 +197,6 @@ public class FirstAndFollow {
     }
 
     /**
-     * TODO: double check and test the correctness of this
      * @param alpha - input sequence
      * @return FIRST(alpha)
      */
